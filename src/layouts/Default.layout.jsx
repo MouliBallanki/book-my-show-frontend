@@ -4,7 +4,6 @@ import React from "react";
 import Navbar from "../components/Navbar/navbar.component";
 
 // herocorousel
-
 import HeroCorousel from "../components/HeroCorousel/HeroCorousel.component";
 
 const DefaultLayout = (props) => {

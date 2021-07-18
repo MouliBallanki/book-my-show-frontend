@@ -3,13 +3,13 @@ import { BiChevronRight,BiSearch,BiChevronDown,BiMenu } from "react-icons/bi";
 
 const NavSm = () =>{
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between w-full">
             <div>
                 <h3 className="text-white font-bold text-2xl">It All starts Here!!</h3>
                 <span className="text-gray-400 text-xs flex items-center ">Bengaluru <BiChevronRight/></span>
             </div>
             <div className="w-8 h-8">
-                <BiSearch className="w-full h-full"/>
+                <BiSearch className="w-full h-full text-white"/>
             </div>
         </div>
     );
@@ -17,10 +17,10 @@ const NavSm = () =>{
 
 const NavMd = () =>{
     return (
-        <div className="w-full flex items-center gap-3 bg-white py-2 px-3 rounded-md">
+            <div className=" flex items-center gap-3 bg-white py-2 px-3 rounded-md">
             <BiSearch />
-            <input type="search" placeholder="Search for movies, events, plays, Sports, Activities ."className="w-full bg-trransparent border-none focus:outline-none rounded"/>
-        </div>
+            <input type="search" placeholder="Search for movies, events, plays, Sports, Activities ." className=" w-full bg-transparent border-none focus:outline-none "/>
+            </div>
     );
 }
 
@@ -55,13 +55,13 @@ const NavLg = () =>{
 const Navbar = () =>{
     return (
         <>
-            <nav className="bg-bms-700 px-4 py-2">
+            <nav className="bg-bms-700 px-8 py-2">
                 <div className="md:hidden ">
                     {/* mobile screen */}
                     <NavSm />
                 </div>
 
-                <div className="hidden md:flex lg:hidden">
+                <div className="hidden md:block  lg:hidden">
                     {/* medium screen */}
                     <NavMd />
                 </div>
