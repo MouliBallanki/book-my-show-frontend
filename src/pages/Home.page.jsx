@@ -21,7 +21,7 @@ const Homepage = () =>{
                     </div>
                 </div>
                 <div className="container mx-auto px-10">
-                    <div className="flex flex-col px-2 py-2">
+                    <div className="flex flex-col px-2 py-2 md:px-3">
                             <h1 className="text-white text-2xl font-bold">Premieres</h1>
                             <p className="text-white text-md font-semi-bold">Brand new realeses every day</p>
                     </div>
@@ -32,14 +32,14 @@ const Homepage = () =>{
             </div>
 
             <div className="container mx-auto px-10">
-                    <div className="flex flex-col px-2 py-2">
+                    <div className="flex flex-col px-2 md:px-3 py-2">
                             <h1 className="text-gray-700 text-2xl font-bold">Outdoor Events</h1>
                     </div>
                     <PosterSlider images={TempImages} isDark={false}/>
             </div>
 
-            <div className="container mx-auto px-10">
-                    <div className="flex flex-col px-2 py-2">
+            <div className="container mx-auto px-10 ">
+                    <div className="flex flex-col px-2 py-2 md:px-3">
                             <h1 className="text-gray-700 text-2xl font-bold">Online Streaming Events</h1>
                     </div>
                     <PosterSlider images={TempImages} isDark={false}/>
