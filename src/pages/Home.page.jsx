@@ -1,12 +1,44 @@
-import React from "react";
+import React ,{useEffect, useState}from "react";
 
-
+import axios from "axios";
 import EntertainmentCardSlider from "../components/Entertainment/EntertainmentCard.component";
 import PosterSlider from '../components/PosterSlider/PosterSlider.component';
 
 import TempImages from '../config/temp.posters.config';
 
 const Homepage = () =>{
+
+    const [popularMovies , setPopularMovies] = useState([]);
+    const [topRatedMovies , setTopRatedMovies] = useState([]);
+    const [upcomingMovies , setUpcomingMovies] = useState([]);
+
+    useEffect(() =>{
+        const requestPopularMovies = async () => {
+            const getPopularMovies = await axios.get("/movie/popular");
+            setPopularMovies(getPopularMovies.data.results)
+    
+        }
+        requestPopularMovies();
+    },[])
+
+    useEffect(() =>{
+        const requestTopRatedMovies = async () => {
+            const getTopRatedMovies = await axios.get("/movie/top_rated");
+            setTopRatedMovies(getTopRatedMovies.data.results)
+    
+        }
+        requestTopRatedMovies();
+    },[])
+
+    useEffect(() =>{
+        const requestUpcomingMovies = async () => {
+            const getUpcomingMovies = await axios.get("/movie/upcoming");
+            setUpcomingMovies(getUpcomingMovies.data.results)
+    
+        }
+        requestUpcomingMovies();
+    },[])
+
     return (
         <>
          <div className="flex flex-col gap-6 w-full">
@@ -25,7 +57,7 @@ const Homepage = () =>{
                             <h1 className="text-white text-2xl font-bold">Premieres</h1>
                             <p className="text-white text-md font-semi-bold">Brand new realeses every day</p>
                     </div>
-                    <PosterSlider images={TempImages} isDark/>
+                    <PosterSlider images={popularMovies} isDark/>
                 </div>
 
                 
@@ -35,14 +67,14 @@ const Homepage = () =>{
                     <div className="flex flex-col px-2 md:px-3 py-2">
                             <h1 className="text-gray-700 text-2xl font-bold">Outdoor Events</h1>
                     </div>
-                    <PosterSlider images={TempImages} isDark={false}/>
+                    <PosterSlider images={topRatedMovies} isDark={false}/>
             </div>
 
             <div className="container mx-auto px-10 ">
                     <div className="flex flex-col px-2 py-2 md:px-3">
                             <h1 className="text-gray-700 text-2xl font-bold">Online Streaming Events</h1>
                     </div>
-                    <PosterSlider images={TempImages} isDark={false}/>
+                    <PosterSlider images={upcomingMovies} isDark={false}/>
             </div>
          </div>
          

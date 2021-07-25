@@ -1,10 +1,20 @@
-import React from "react";
+import React,{useState , useEffect} from "react";
 import HeroSlider from "react-slick";
 
+import axios from "axios";
 
 import { NextArrow,PrevArrow } from "./Arrows.component";
 
 const HeroCorousel = () =>{
+    const [images,setImages] = useState([]);
+
+    useEffect(() =>{
+        const requestNowPlayingMovies = async ()=>{
+            const getImages = await axios.get("/movie/now_playing");
+            setImages(getImages.data.results);
+        }
+        requestNowPlayingMovies();
+    },[])
     const settingsLG = {
 
         arrows:true,
@@ -29,14 +39,6 @@ const HeroCorousel = () =>{
     };
     
 
-    const images = [
-        "https://in.bmscdn.com/promotions/cms/creatives/1625077257492_dearishqafestivalofkisseykahaniyaanpoetry_webshowcase_1280x500.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1625559967524_bsm_1280x500_romcom.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1625685026902_joboltahaiwohihotahaifeatharshgujral_webshowcase_1280x500.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1626065541062_spanishbundle1280x500ios.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1626516962069_honestthief_1280x500_ios.jpg",
-      ];
-
     return (
         <>
             <div className="lg:hidden ">
@@ -44,7 +46,7 @@ const HeroCorousel = () =>{
                     {
                         images.map((image) => (
                             <div className="w-full h-56 md:h-80 py-2">
-                                <img src={image} alt="testing" className="w-full h-full rounded-md"/>
+                                <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="testing" className="w-full h-full rounded-md"/>
                             </div>
                         ))
                     }
@@ -57,7 +59,7 @@ const HeroCorousel = () =>{
                     {
                         images.map((image) => (
                             <div className="w-20 h-80 px-1 py-3 ">
-                                <img src={image} alt="testing" className="w-full h-full rounded-md"/>
+                                <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="testing" className="w-full h-full rounded-md"/>
                             </div>
                         ))
                     }

@@ -1,14 +1,14 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {FaCcVisa} from "react-icons/fa"
 import MovieHero from '../components/MovieHero/MovieHero.component'
 import Cast from '../components/Cast/Cast.component';
 import PosterSlider from '../components/PosterSlider/PosterSlider.component';
 
 import TempImages from '../config/temp.posters.config';
-import settings from '../config/PosterCorousel.config';
-
+// context
+import { MovieContext } from '../Context/Movie.context';
 const Movie = () => {
-
+    const { movie } = useContext(MovieContext);
     const settings = {
         infinite: false,
         dots:false,
@@ -53,7 +53,7 @@ const Movie = () => {
            <div className="container px-4 lg:ml-10 py-8 lg:w-3/4">
                 <div className="flex flex-col gap-4">
                     <h2 className="text-gray-800 font-bold text-2xl"> About the movie</h2>
-                    <p>Bruce Wayne and Diana Prince try to bring the metahumans of Earth together after the death of Clark Kent. Meanwhile, Darkseid sends Steppenwolf to Earth with an army to subjugate humans.</p>
+                    <p>{movie.overview}</p>
                 </div>
                 <div className="mt-8">
                     <hr />
