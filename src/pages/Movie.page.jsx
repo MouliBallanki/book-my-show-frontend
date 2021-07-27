@@ -23,7 +23,7 @@ const Movie = () => {
             setCast(getCast.data.cast);
         }
         requestCast();
-    }, [])
+    }, [id])
 
     useEffect(() =>{
         const requestsimilarMovies = async () => {
@@ -32,7 +32,7 @@ const Movie = () => {
     
         }
         requestsimilarMovies();
-    },[])
+    },[id])
 
     useEffect(() =>{
         const requestRecommendedMovies = async () => {
@@ -41,7 +41,7 @@ const Movie = () => {
     
         }
         requestRecommendedMovies();
-    },[])
+    },[id])
 
     const settings = {
         infinite: false,
